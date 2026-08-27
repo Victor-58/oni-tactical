@@ -1,5 +1,5 @@
 // netlify/functions/callback.js
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const clientId = process.env.OAUTH_CLIENT_ID;
   const clientSecret = process.env.OAUTH_CLIENT_SECRET;
   const code = event.queryStringParameters.code;

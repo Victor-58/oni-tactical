@@ -1,5 +1,5 @@
 // netlify/functions/auth.js
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const clientId = process.env.OAUTH_CLIENT_ID;
   const host = event.headers['x-forwarded-host'] || event.headers.host;
   const protocol = event.headers['x-forwarded-proto'] || 'https';
