@@ -1,0 +1,298 @@
+---
+// src/pages/cursos/[slug].astro
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const cursos = await getCollection('cursos', ({ data }) => data.publicado);
+  return cursos.map((curso) => ({
+    params: { slug: curso.id },
+    props: { curso },
+  }));
+}
+
+const { curso } = Astro.props;
+const { Content } = await render(curso);
+---
+
+<Base titulo={curso.data.nome} descricao={curso.data.descricao}>
+  <Header />
+
+  <div class="curso-page">
+    <div class="voltar-bar">
+      <a href="/#cursos" class="voltar-btn">← Voltar</a>
+      <span class="slug">/cursos/{curso.id}</span>
+    </div>
+
+    <div class="curso-container">
+      <span class="kicker">Curso · {curso.data.nivel}</span>
+      <h1>{curso.data.nome}</h1>
+
+      <div class="curso-imagem-hero">
+        <span>[ imagem do curso ]</span>
+      </div>
+
+      <div class="curso-layout">
+        <div class="curso-conteudo">
+          <div class="bloco">
+            <h2>Descrição</h2>
+            <Content />
+          </div>
+
+          {curso.data.objetivos.length > 0 && (
+            <div class="bloco">
+              <h2>Objetivos</h2>
+              <ul>
+                {curso.data.objetivos.map((obj) => <li>{obj}</li>)}
+              </ul>
+            </div>
+          )}
+
+          {curso.data.incluso.length > 0 && (
+            <div class="bloco">
+              <h2>O que está incluso</h2>
+              <ul>
+                {curso.data.incluso.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          )}
+
+          <div class="bloco bloco-seguranca">
+            <h2>Informações de segurança</h2>
+            <p>Atividade realizada em ambiente controlado e supervisionado, com briefing de segurança obrigatório, uso dos equipamentos de proteção adequados e cumprimento das regras do local e da legislação aplicável.</p>
+          </div>
+        </div>
+
+        <aside class="curso-sidebar">
+          <dl>
+            <div>
+              <dt>Duração</dt>
+              <dd>{curso.data.duracao}</dd>
+            </div>
+            <div>
+              <dt>Nível</dt>
+              <dd>{curso.data.nivel}</dd>
+            </div>
+            <div>
+              <dt>Modalidade</dt>
+              <dd>{curso.data.modalidade}</dd>
+            </div>
+            <div class="ultimo">
+              <dt>Investimento</dt>
+              <dd class="investimento">{curso.data.investimento || 'Sob consulta'}</dd>
+            </div>
+          </dl>
+          <a href="#contato" class="btn-interesse">Tenho interesse neste curso</a>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Base>
+
+<style>
+  .curso-page {
+    padding-top: 78px;
+  }
+
+  .voltar-bar {
+    position: sticky;
+    top: 78px;
+    z-index: 80;
+    background: rgba(10, 10, 11, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #1E1F22;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: space-between;
+  }
+
+  .voltar-btn {
+    background: transparent;
+    border: 1px solid #26272B;
+    color: #C0BFBA;
+    padding: 12px 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .voltar-btn:hover {
+    border-color: #C8A24A;
+    color: #C8A24A;
+  }
+
+  .slug {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #6E6D68;
+  }
+
+  .curso-container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 24px 110px;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(34px, 6vw, 66px);
+    line-height: 1.02;
+    text-transform: uppercase;
+    margin: 18px 0 26px;
+    max-width: 20ch;
+  }
+
+  .curso-imagem-hero {
+    height: 300px;
+    background: repeating-linear-gradient(135deg, #17181A 0 12px, #121315 12px 24px);
+    border: 1px solid #1E1F22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 44px;
+  }
+
+  .curso-imagem-hero span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: #55554F;
+  }
+
+  .curso-layout {
+    display: grid;
+    gap: 56px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: start;
+  }
+
+  .curso-conteudo {
+    display: grid;
+    gap: 40px;
+  }
+
+  .bloco h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    color: #C8A24A;
+  }
+
+  .bloco p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #C0BFBA;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .bloco ul {
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #B8B7B2;
+    font-weight: 300;
+  }
+
+  .bloco-seguranca {
+    border-left: 2px solid #C8A24A;
+    padding: 22px 26px;
+    background: #0D0E10;
+  }
+
+  .bloco-seguranca h2 {
+    font-size: 20px;
+  }
+
+  .curso-sidebar {
+    position: sticky;
+    top: 150px;
+    border: 1px solid #1E1F22;
+    background: #0D0E10;
+    padding: 30px;
+  }
+
+  .curso-sidebar dl {
+    margin: 0 0 26px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .curso-sidebar dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #1E1F22;
+  }
+
+  .curso-sidebar dl > div.ultimo {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .curso-sidebar dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #6E6D68;
+  }
+
+  .curso-sidebar dd {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+  }
+
+  .investimento {
+    color: #C8A24A;
+  }
+
+  .btn-interesse {
+    display: block;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    background: #C8A24A;
+    color: #0A0A0B;
+    border: none;
+    padding: 17px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .btn-interesse:hover {
+    background: #E3C579;
+  }
+</style>

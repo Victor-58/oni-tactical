@@ -1,0 +1,160 @@
+---
+// src/components/Sobre.astro
+---
+
+<section id="sobre" class="sobre">
+  <div class="sobre-grid">
+    <div>
+      <span class="kicker">01 / Instituição</span>
+      <h2>Sobre a ONI Tactical</h2>
+      <p>A ONI Tactical é uma empresa dedicada a cursos, treinamentos e capacitação na prática do tiro esportivo e no treinamento tático. Nosso trabalho parte de um princípio simples: fundamentos bem executados, ensinados com método e responsabilidade.</p>
+      <p>Todas as atividades são conduzidas por instrutores qualificados, em ambiente controlado e supervisionado, com uso obrigatório dos equipamentos de proteção adequados e respeito integral às normas do local de treinamento e à legislação aplicável.</p>
+      <p>O resultado é um percurso de desenvolvimento técnico progressivo, no qual disciplina e segurança não são acessórios do treinamento: são o treinamento.</p>
+
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num">+00</div>
+          <div class="stat-label">alunos treinados</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">+00</div>
+          <div class="stat-label">cursos realizados</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">00</div>
+          <div class="stat-label">instrutores</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">00</div>
+          <div class="stat-label">anos de experiência</div>
+        </div>
+      </div>
+      <p class="stats-note">// substituir 00 pelos números reais no painel administrativo</p>
+    </div>
+
+    <div class="sobre-photo">
+      <span class="photo-placeholder">[ foto — instrução em ambiente controlado ]</span>
+      <span class="corner corner-tl"></span>
+      <span class="corner corner-br"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sobre {
+    scroll-margin-top: 78px;
+    padding: 110px 24px;
+    border-top: 1px solid #17181A;
+  }
+
+  .sobre-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    gap: 64px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    align-items: start;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin: 20px 0 30px;
+  }
+
+  .sobre p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #C0BFBA;
+    margin: 0 0 20px;
+    font-weight: 300;
+  }
+
+  .stats-grid {
+    display: grid;
+    gap: 1px;
+    background: #1E1F22;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-top: 14px;
+  }
+
+  .stat {
+    background: #0F1012;
+    padding: 22px 20px;
+  }
+
+  .stat-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #C8A24A;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #86857F;
+    margin-top: 9px;
+  }
+
+  .stats-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #6E6D68;
+    margin: 14px 0 0;
+  }
+
+  .sobre-photo {
+    position: relative;
+    min-height: 520px;
+    background: repeating-linear-gradient(135deg, #17181A 0 12px, #121315 12px 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #1E1F22;
+  }
+
+  .photo-placeholder {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: #55554F;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .corner {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+  }
+
+  .corner-tl {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid #C8A24A;
+    border-left: 2px solid #C8A24A;
+  }
+
+  .corner-br {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid #C8A24A;
+    border-right: 2px solid #C8A24A;
+  }
+</style>

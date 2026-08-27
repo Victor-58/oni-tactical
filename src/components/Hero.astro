@@ -1,0 +1,186 @@
+---
+// src/components/Hero.astro
+---
+
+<section id="top" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <span class="hero-photo-note">[ foto do hero — treinamento em ambiente controlado ]</span>
+
+  <div class="hero-content">
+    <div class="hero-kicker">
+      <span class="hero-line"></span>
+      <span>O básico bem feito</span>
+    </div>
+
+    <h1>Treinamento, <span class="accent">Técnica</span> e Precisão.</h1>
+
+    <p class="hero-desc">
+      Capacitação profissional para quem busca desenvolver conhecimento, disciplina e segurança na prática do tiro.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#cursos" class="btn-primary">Ver cursos</a>
+      <a href="#contato" class="btn-outline">Falar com a ONI Tactical</a>
+    </div>
+
+    <div class="hero-footnote">
+      <span class="hero-dot"></span>
+      <p>Treinamento realizado em ambiente controlado, com foco em segurança, técnica e cumprimento da legislação aplicável.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 150px 24px 0;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, #17181A 0 12px, #121315 12px 24px);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,11,0.82) 0%, rgba(10,10,11,0.6) 45%, rgba(10,10,11,0.97) 100%);
+  }
+
+  .hero-photo-note {
+    position: absolute;
+    top: 100px;
+    right: 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: #6E6D68;
+    text-transform: uppercase;
+    text-align: right;
+    max-width: 60vw;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 64px;
+  }
+
+  .hero-kicker {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 26px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  .hero-line {
+    width: 46px;
+    height: 1px;
+    background: #C8A24A;
+  }
+
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(44px, 8.4vw, 104px);
+    line-height: 0.94;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin: 0 0 26px;
+    max-width: 15ch;
+    text-wrap: balance;
+  }
+
+  h1 .accent {
+    color: #C8A24A;
+  }
+
+  .hero-desc {
+    font-size: clamp(16px, 2.1vw, 21px);
+    line-height: 1.55;
+    color: #BEBDB8;
+    max-width: 56ch;
+    margin: 0 0 38px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 46px;
+  }
+
+  .btn-primary {
+    padding: 18px 34px;
+    background: #C8A24A;
+    color: #0A0A0B;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    clip-path: polygon(11px 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%, 0 11px);
+    transition: background 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: #E3C579;
+  }
+
+  .btn-outline {
+    padding: 18px 34px;
+    border: 1px solid #35363A;
+    color: #F2F1EE;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: #C8A24A;
+    color: #C8A24A;
+  }
+
+  .hero-footnote {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    max-width: 62ch;
+    padding-top: 22px;
+    border-top: 1px solid #1E1F22;
+  }
+
+  .hero-dot {
+    width: 6px;
+    height: 6px;
+    background: #C8A24A;
+    margin-top: 7px;
+    flex: 0 0 auto;
+    transform: rotate(45deg);
+  }
+
+  .hero-footnote p {
+    margin: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #8A8983;
+  }
+</style>

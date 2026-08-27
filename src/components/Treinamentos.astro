@@ -1,0 +1,102 @@
+---
+// src/components/Treinamentos.astro
+const modalidades = [
+  {
+    numero: '01',
+    titulo: 'Turmas abertas',
+    texto: 'Datas programadas com número limitado de vagas, acompanhamento próximo dos instrutores e conteúdo padronizado.',
+  },
+  {
+    numero: '02',
+    titulo: 'Treinamento individual',
+    texto: 'Plano construído a partir de uma avaliação inicial do nível técnico e dos objetivos de cada aluno.',
+  },
+  {
+    numero: '03',
+    titulo: 'Grupos e empresas',
+    texto: 'Programas de capacitação organizados para grupos fechados, com cronograma e conteúdo definidos em conjunto.',
+  },
+];
+---
+
+<section id="treinamentos" class="treinamentos">
+  <div class="inner">
+    <span class="kicker">03 / Modalidades</span>
+    <h2>Como treinamos</h2>
+
+    <div class="modalidades-grid">
+      {modalidades.map((m) => (
+        <div class="modalidade">
+          <span class="numero">{m.numero}</span>
+          <h3>{m.titulo}</h3>
+          <p>{m.texto}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .treinamentos {
+    scroll-margin-top: 78px;
+    padding: 110px 24px;
+    border-top: 1px solid #17181A;
+  }
+
+  .inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin: 20px 0 54px;
+  }
+
+  .modalidades-grid {
+    display: grid;
+    gap: 1px;
+    background: #1E1F22;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .modalidade {
+    background: #0A0A0B;
+    padding: 38px 32px;
+  }
+
+  .numero {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: #C8A24A;
+  }
+
+  .modalidade h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 21px;
+    text-transform: uppercase;
+    margin: 16px 0 12px;
+  }
+
+  .modalidade p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #A5A49E;
+    margin: 0;
+    font-weight: 300;
+  }
+</style>

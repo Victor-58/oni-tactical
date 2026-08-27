@@ -1,0 +1,38 @@
+---
+// src/layouts/Base.astro
+import '../styles/global.css';
+
+interface Props {
+  titulo: string;
+  descricao: string;
+}
+
+const { titulo, descricao } = Astro.props;
+const tituloCompleto = titulo.includes('ONI Tactical')
+  ? titulo
+  : `${titulo} | ONI Tactical`;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <title>{tituloCompleto}</title>
+  <meta name="description" content={descricao} />
+
+  <meta property="og:title" content={tituloCompleto} />
+  <meta property="og:description" content={descricao} />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={tituloCompleto} />
+  <meta name="twitter:description" content={descricao} />
+</head>
+<body>
+  <slot />
+</body>
+</html>

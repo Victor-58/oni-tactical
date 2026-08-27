@@ -1,0 +1,44 @@
+/* src/styles/global.css */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0A0A0B;
+  color: #F2F1EE;
+  font-family: 'Barlow', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #C8A24A;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #E3C579;
+}
+
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+::selection {
+  background: #C8A24A;
+  color: #0A0A0B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input, textarea, select, button {
+  font-family: inherit;
+}

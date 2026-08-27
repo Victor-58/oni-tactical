@@ -1,0 +1,218 @@
+---
+// src/components/Header.astro
+const links = [
+  { href: '#top', label: 'Início' },
+  { href: '#sobre', label: 'Sobre nós' },
+  { href: '#cursos', label: 'Cursos' },
+  { href: '#treinamentos', label: 'Treinamentos' },
+  { href: '#estrutura', label: 'Estrutura' },
+  { href: '#instrutores', label: 'Instrutores' },
+  { href: '#faq', label: 'FAQ' },
+  { href: '#contato', label: 'Contato' },
+];
+---
+
+<header class="header" id="site-header">
+  <div class="header-inner">
+    <a href="#top" aria-label="ONI Tactical — início" class="logo-link">
+      <img src="/imagens/oni-logo.png" alt="ONI Tactical" class="logo-img" />
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navegação principal">
+      {links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+      <a href="#cursos" class="cta-btn">Conheça nossos cursos</a>
+    </nav>
+
+    <button
+      id="menu-toggle"
+      class="menu-btn"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span></span>
+      <span></span>
+      <span class="accent"></span>
+    </button>
+  </div>
+
+  <nav id="mobile-nav" class="nav-mobile" aria-label="Navegação mobile" hidden>
+    {links.slice(1).map((link) => (
+      <a href={link.href} class="mobile-link">{link.label}</a>
+    ))}
+    <a href="#cursos" class="cta-btn cta-btn-mobile">Conheça nossos cursos</a>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background: rgba(10, 10, 11, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #1E1F22;
+  }
+
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .logo-link {
+    flex: 0 0 auto;
+    display: block;
+    width: 64px;
+    height: 47px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo-img {
+    position: absolute;
+    width: 89px;
+    height: 89px;
+    left: -13px;
+    top: -23px;
+    mix-blend-mode: screen;
+  }
+
+  .nav-desktop {
+    margin-left: auto;
+    display: none;
+    gap: 26px;
+    align-items: center;
+  }
+
+  .nav-desktop a {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #C9C8C3;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-desktop a:hover {
+    color: #C8A24A;
+  }
+
+  .cta-btn {
+    margin-left: 6px;
+    padding: 12px 20px;
+    background: #C8A24A;
+    color: #0A0A0B !important;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    clip-path: polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px);
+    transition: background 0.3s;
+  }
+
+  .cta-btn:hover {
+    background: #E3C579;
+  }
+
+  .menu-btn {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid #2A2B2F;
+    color: #F2F1EE;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: #F2F1EE;
+  }
+
+  .menu-btn span.accent {
+    background: #C8A24A;
+  }
+
+  .nav-mobile {
+    border-top: 1px solid #1E1F22;
+    background: #0D0E10;
+    padding: 18px 24px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+    .nav-mobile[hidden] {
+    display: none;
+  }
+
+  .mobile-link {
+    padding: 13px 0;
+    border-bottom: 1px solid #17181A;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #F2F1EE;
+  }
+
+  .cta-btn-mobile {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+  }
+
+    @media (min-width: 900px) {
+    .nav-desktop {
+      display: flex;
+    }
+    .menu-btn {
+      display: none;
+    }
+    .nav-mobile {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileNav?.hasAttribute('hidden') === false;
+
+    if (isOpen) {
+      mobileNav?.setAttribute('hidden', '');
+      toggle.setAttribute('aria-expanded', 'false');
+    } else {
+      mobileNav?.removeAttribute('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Fecha o menu ao clicar em qualquer link mobile
+  mobileNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileNav.setAttribute('hidden', '');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

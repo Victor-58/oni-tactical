@@ -1,0 +1,117 @@
+---
+// src/components/Depoimentos.astro
+import { getCollection } from 'astro:content';
+
+const depoimentosData = await getCollection('depoimentos');
+const depoimentos = depoimentosData.map((item) => item.data);
+---
+
+<section class="depoimentos">
+  <div class="inner">
+    <span class="kicker">07 / Alunos</span>
+    <h2>O que nossos alunos dizem</h2>
+
+    <div class="depoimentos-grid">
+      {depoimentos.map((d) => (
+        <blockquote class="depoimento-card">
+          <div class="estrelas">★★★★★</div>
+          <p class="depoimento-texto">{d.texto}</p>
+          <footer>
+            <span class="avatar"></span>
+            <span>
+              <span class="nome">{d.nome}</span>
+              <span class="curso">{d.curso}</span>
+            </span>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .depoimentos {
+    padding: 110px 24px;
+    border-top: 1px solid #17181A;
+  }
+
+  .inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin: 20px 0 54px;
+  }
+
+  .depoimentos-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+
+  .depoimento-card {
+    margin: 0;
+    padding: 32px;
+    border: 1px solid #1E1F22;
+    background: #0D0E10;
+  }
+
+  .estrelas {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.3em;
+    color: #C8A24A;
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  .depoimento-texto {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #C0BFBA;
+    margin: 0 0 24px;
+    font-weight: 300;
+  }
+
+  .depoimento-card footer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .avatar {
+    width: 42px;
+    height: 42px;
+    background: repeating-linear-gradient(135deg, #1D1E21 0 6px, #16171A 6px 12px);
+    flex: 0 0 auto;
+  }
+
+  .nome {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .curso {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: #6E6D68;
+    letter-spacing: 0.12em;
+  }
+</style>

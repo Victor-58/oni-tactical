@@ -1,0 +1,114 @@
+---
+// src/components/Faq.astro
+import { getCollection, render } from 'astro:content';
+
+const perguntasData = await getCollection('faq');
+const perguntas = perguntasData.sort((a, b) => a.data.ordem - b.data.ordem);
+---
+<section id="faq" class="faq">
+  <div class="inner">
+    <span class="kicker">08 / Dúvidas</span>
+    <h2>Perguntas frequentes</h2>
+
+        <div class="faq-list">
+      {perguntas.map(async (item) => {
+        const { Content } = await render(item);
+        return (
+          <details class="faq-item">
+            <summary>
+              <span>{item.data.pergunta}</span>
+              <span class="icon">+</span>
+            </summary>
+            <div class="faq-resposta"><Content /></div>
+          </details>
+        );
+      })}
+    </div>
+
+    <p class="faq-note">// perguntas e respostas editáveis no painel administrativo</p>
+  </div>
+</section>
+
+<style>
+  .faq {
+    scroll-margin-top: 78px;
+    padding: 110px 24px;
+    background: #0D0E10;
+    border-top: 1px solid #17181A;
+  }
+
+  .inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin: 20px 0 44px;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 1px;
+    background: #1E1F22;
+  }
+
+  .faq-item {
+    background: #0A0A0B;
+  }
+
+  .faq-item summary {
+    padding: 24px 26px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #F2F1EE;
+  }
+
+  .faq-item .icon {
+    color: #C8A24A;
+    font-size: 20px;
+    flex: 0 0 auto;
+    transition: transform 0.2s;
+  }
+
+  .faq-item[open] .icon {
+    transform: rotate(45deg);
+  }
+
+    .faq-item .faq-resposta {
+    padding: 0 26px 26px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #A5A49E;
+    font-weight: 300;
+  }
+
+  .faq-item .faq-resposta p {
+    margin: 0;
+  }
+
+  .faq-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #6E6D68;
+    margin: 22px 0 0;
+  }
+</style>

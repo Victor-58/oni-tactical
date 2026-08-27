@@ -1,0 +1,189 @@
+---
+// src/components/Contato.astro
+const cursosOptions = [
+  'Curso de Introdução ao Tiro Esportivo',
+  'Treinamento de Fundamentos',
+  'Treinamento Avançado',
+  'Treinamento Personalizado',
+  'Ainda não sei',
+];
+---
+
+<section id="contato" class="contato">
+  <div class="inner">
+    <div class="contato-info">
+      <span class="kicker">09 / Contato</span>
+      <h2>Fale com a ONI Tactical</h2>
+      <p class="contato-desc">Conte o que você procura e em qual curso tem interesse. Nossa equipe responde com datas, disponibilidade e orientações.</p>
+
+      <div class="contato-links">
+        <a href="#" class="contato-link"><span>WhatsApp</span><span class="valor">(00) 00000-0000</span></a>
+        <a href="#" class="contato-link"><span>Instagram</span><span class="valor">@onitactical</span></a>
+        <a href="#" class="contato-link"><span>E-mail</span><span class="valor">contato@exemplo.com</span></a>
+        <a href="#" class="contato-link"><span>Localização</span><span class="valor">endereço a informar</span></a>
+      </div>
+    </div>
+
+    <form class="contato-form">
+      <label>
+        <span>Nome</span>
+        <input type="text" name="nome" required placeholder="Seu nome completo" />
+      </label>
+      <label>
+        <span>E-mail</span>
+        <input type="email" name="email" required placeholder="voce@email.com" />
+      </label>
+      <label>
+        <span>Telefone</span>
+        <input type="tel" name="telefone" placeholder="(00) 00000-0000" />
+      </label>
+      <label>
+        <span>Curso de interesse</span>
+        <select name="curso">
+          {cursosOptions.map((c) => <option>{c}</option>)}
+        </select>
+      </label>
+      <label>
+        <span>Mensagem</span>
+        <textarea name="mensagem" rows="4" placeholder="Conte um pouco sobre seu objetivo e experiência."></textarea>
+      </label>
+      <button type="submit">Enviar mensagem</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contato {
+    scroll-margin-top: 78px;
+    padding: 110px 24px;
+    border-top: 1px solid #17181A;
+  }
+
+  .inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    gap: 64px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: start;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin: 20px 0 20px;
+  }
+
+  .contato-desc {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #A5A49E;
+    margin: 0 0 36px;
+    font-weight: 300;
+    max-width: 46ch;
+  }
+
+  .contato-links {
+    display: grid;
+    gap: 12px;
+    max-width: 400px;
+  }
+
+  .contato-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    border: 1px solid #1E1F22;
+    color: #F2F1EE;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+  }
+
+  .contato-link:hover {
+    border-color: #C8A24A;
+  }
+
+  .contato-link .valor {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #6E6D68;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .contato-form {
+    border: 1px solid #1E1F22;
+    background: #0D0E10;
+    padding: 36px;
+    display: grid;
+    gap: 20px;
+  }
+
+  .contato-form label {
+    display: grid;
+    gap: 8px;
+  }
+
+  .contato-form label span:first-child {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #86857F;
+  }
+
+  .contato-form input,
+  .contato-form select,
+  .contato-form textarea {
+    background: #0A0A0B;
+    border: 1px solid #26272B;
+    color: #F2F1EE;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .contato-form input:focus,
+  .contato-form select:focus,
+  .contato-form textarea:focus {
+    border-color: #C8A24A;
+    outline: none;
+  }
+
+  .contato-form textarea {
+    resize: vertical;
+  }
+
+  .contato-form button {
+    background: #C8A24A;
+    color: #0A0A0B;
+    border: none;
+    padding: 18px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .contato-form button:hover {
+    background: #E3C579;
+  }
+</style>

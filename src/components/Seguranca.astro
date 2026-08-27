@@ -1,0 +1,102 @@
+---
+// src/components/Seguranca.astro
+const principios = [
+  'Segurança acima de tudo, em qualquer etapa do treinamento.',
+  'Orientação permanente de instrutores qualificados.',
+  'Uso obrigatório dos equipamentos de proteção adequados.',
+  'Cumprimento das regras do local de treinamento.',
+  'Respeito às normas e à legislação aplicável.',
+  'Ambiente controlado e supervisionado do início ao fim.',
+];
+---
+
+<section id="seguranca" class="seguranca">
+  <div class="inner">
+    <div class="header-block">
+      <span class="kicker">04 / Protocolo</span>
+      <h2>Segurança em primeiro lugar</h2>
+      <p>Nenhuma atividade começa antes do briefing de segurança. Estes princípios são obrigatórios para instrutores, alunos e visitantes.</p>
+    </div>
+
+    <div class="principios-grid">
+      {principios.map((texto, i) => (
+        <div class="principio">
+          <span class="numero">{String(i + 1).padStart(2, '0')}</span>
+          <p>{texto}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .seguranca {
+    scroll-margin-top: 78px;
+    padding: 110px 24px;
+    background: #0D0E10;
+    border-top: 1px solid #17181A;
+  }
+
+  .inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .header-block {
+    max-width: 60ch;
+    margin-bottom: 54px;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin: 20px 0 20px;
+  }
+
+  .header-block p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #A5A49E;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .principios-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .principio {
+    display: flex;
+    gap: 18px;
+    padding: 26px;
+    border-left: 2px solid #C8A24A;
+    background: #0A0A0B;
+  }
+
+  .numero {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: #C8A24A;
+    flex: 0 0 auto;
+  }
+
+  .principio p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #DAD9D4;
+  }
+</style>
