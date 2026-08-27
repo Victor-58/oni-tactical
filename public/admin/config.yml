@@ -1,0 +1,70 @@
+backend:
+  name: github
+  repo: Victor-58/oni-tactical
+  branch: main
+  base_url: https://idyllic-kataifi-a55830.netlify.app
+  auth_endpoint: api/auth
+
+locale: pt
+
+media_folder: public/imagens
+public_folder: /imagens
+
+collections:
+  - name: cursos
+    label: Cursos
+    label_singular: Curso
+    folder: src/content/cursos
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { name: nome, label: Nome do curso, widget: string }
+      - { name: descricao, label: Descrição curta, widget: text }
+      - { name: nivel, label: Nível, widget: select,
+          options: [Iniciante, Intermediário, Avançado, Todos os níveis] }
+      - { name: duracao, label: Duração, widget: string }
+      - { name: modalidade, label: Modalidade, widget: select,
+          options: [Presencial, Individual] }
+      - { name: investimento, label: Investimento, widget: string, required: false }
+      - { name: objetivos, label: Objetivos, widget: list, required: false }
+      - { name: incluso, label: O que está incluso, widget: list, required: false }
+      - { name: publicado, label: Publicado no site, widget: boolean, default: false }
+      - { name: ordem, label: Ordem de exibição, widget: number, default: 0 }
+      - { name: body, label: Descrição completa, widget: markdown, required: false }
+
+  - name: instrutores
+    label: Instrutores
+    label_singular: Instrutor
+    folder: src/content/instrutores
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { name: nome, label: Nome, widget: string }
+      - { name: cargo, label: Cargo / função, widget: string }
+      - { name: experiencia, label: Experiência, widget: string }
+      - { name: certificacoes, label: Certificações, widget: string }
+      - { name: especialidades, label: Especialidades, widget: string }
+      - { name: foto, label: Foto, widget: image, required: false }
+      - { name: ordem, label: Ordem de exibição, widget: number, default: 0 }
+
+  - name: depoimentos
+    label: Depoimentos
+    label_singular: Depoimento
+    folder: src/content/depoimentos
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { name: nome, label: Nome do aluno, widget: string }
+      - { name: curso, label: Curso realizado, widget: string }
+      - { name: texto, label: Depoimento, widget: text }
+
+  - name: faq
+    label: FAQ
+    label_singular: Pergunta
+    folder: src/content/faq
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { name: pergunta, label: Pergunta, widget: string }
+      - { name: ordem, label: Ordem de exibição, widget: number, default: 0 }
+      - { name: body, label: Resposta, widget: markdown }
