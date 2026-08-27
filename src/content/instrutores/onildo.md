@@ -4,6 +4,6 @@ cargo: Cargo / função
 experiencia: A informar
 certificacoes: A informar
 especialidades: A informar
-foto: /imagens/Onildo.png
+foto: /imagens/Onildo.webp
 ordem: 1
 ---

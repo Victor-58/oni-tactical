@@ -1,6 +1,12 @@
 ---
 // src/layouts/Base.astro
 import '../styles/global.css';
+import '@fontsource/oswald/500.css';
+import '@fontsource/oswald/600.css';
+import '@fontsource/barlow/300.css';
+import '@fontsource/barlow/400.css';
+import '@fontsource/barlow/500.css';
+import '@fontsource/ibm-plex-mono/400.css';
 
 interface Props {
   titulo: string;
@@ -31,6 +37,14 @@ const tituloCompleto = titulo.includes('ONI Tactical')
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={tituloCompleto} />
   <meta name="twitter:description" content={descricao} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'ONI Tactical',
+    description: 'Cursos e treinamentos de tiro esportivo e treinamento tático em ambiente controlado.',
+    url: Astro.site?.toString(),
+  })} />
 </head>
 <body>
   <slot />
