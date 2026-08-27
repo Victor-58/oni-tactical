@@ -1,0 +1,80 @@
+---
+// src/pages/obrigado.astro
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  titulo="Mensagem enviada"
+  descricao="Recebemos sua mensagem e retornaremos em breve."
+>
+  <Header />
+
+  <section class="obrigado">
+    <div class="obrigado-content">
+      <span class="kicker">Mensagem enviada</span>
+      <h1>Obrigado pelo contato!</h1>
+      <p>Recebemos sua mensagem e nossa equipe vai retornar em breve com mais informações sobre o curso escolhido.</p>
+      <a href="/" class="btn-voltar">Voltar para o site</a>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .obrigado {
+    padding: 200px 24px 140px;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .obrigado-content {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #C8A24A;
+  }
+
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(32px, 5vw, 52px);
+    text-transform: uppercase;
+    margin: 18px 0 22px;
+  }
+
+  .obrigado-content p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #A5A49E;
+    margin: 0 0 40px;
+    font-weight: 300;
+  }
+
+  .btn-voltar {
+    display: inline-block;
+    background: #C8A24A;
+    color: #0A0A0B;
+    padding: 16px 32px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .btn-voltar:hover {
+    background: #E3C579;
+  }
+</style>

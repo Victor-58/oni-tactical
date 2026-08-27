@@ -1,11 +1,11 @@
 ---
 // src/components/Contato.astro
 const cursosOptions = [
-  'Curso de Introdução ao Tiro Esportivo',
-  'Treinamento de Fundamentos',
-  'Treinamento Avançado',
-  'Treinamento Personalizado',
-  'Ainda não sei',
+  "Curso de Introdução ao Tiro Esportivo",
+  "Treinamento de Fundamentos",
+  "Treinamento Avançado",
+  "Treinamento Personalizado",
+  "Ainda não sei",
 ];
 ---
 
@@ -14,24 +14,56 @@ const cursosOptions = [
     <div class="contato-info">
       <span class="kicker">09 / Contato</span>
       <h2>Fale com a ONI Tactical</h2>
-      <p class="contato-desc">Conte o que você procura e em qual curso tem interesse. Nossa equipe responde com datas, disponibilidade e orientações.</p>
+      <p class="contato-desc">
+        Conte o que você procura e em qual curso tem interesse. Nossa equipe
+        responde com datas, disponibilidade e orientações.
+      </p>
 
       <div class="contato-links">
-        <a href="#" class="contato-link"><span>WhatsApp</span><span class="valor">(00) 00000-0000</span></a>
-        <a href="#" class="contato-link"><span>Instagram</span><span class="valor">@onitactical</span></a>
-        <a href="#" class="contato-link"><span>E-mail</span><span class="valor">contato@exemplo.com</span></a>
-        <a href="#" class="contato-link"><span>Localização</span><span class="valor">endereço a informar</span></a>
+        <a href="#" class="contato-link"
+          ><span>WhatsApp</span><span class="valor">(00) 00000-0000</span></a
+        >
+        <a href="#" class="contato-link"
+          ><span>Instagram</span><span class="valor">@onitactical</span></a
+        >
+        <a href="#" class="contato-link"
+          ><span>E-mail</span><span class="valor">contato@exemplo.com</span></a
+        >
+        <a href="#" class="contato-link"
+          ><span>Localização</span><span class="valor">endereço a informar</span
+          ></a
+        >
       </div>
     </div>
 
-    <form class="contato-form">
+    <form
+      class="contato-form"
+      name="contato"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/obrigado"
+    >
+      <p class="hidden-field">
+        <label>Não preencha isto: <input name="bot-field" /></label>
+      </p>
       <label>
         <span>Nome</span>
-        <input type="text" name="nome" required placeholder="Seu nome completo" />
+        <input
+          type="text"
+          name="nome"
+          required
+          placeholder="Seu nome completo"
+        />
       </label>
       <label>
         <span>E-mail</span>
-        <input type="email" name="email" required placeholder="voce@email.com" />
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="voce@email.com"
+        />
       </label>
       <label>
         <span>Telefone</span>
@@ -45,7 +77,11 @@ const cursosOptions = [
       </label>
       <label>
         <span>Mensagem</span>
-        <textarea name="mensagem" rows="4" placeholder="Conte um pouco sobre seu objetivo e experiência."></textarea>
+        <textarea
+          name="mensagem"
+          rows="4"
+          placeholder="Conte um pouco sobre seu objetivo e experiência."
+        ></textarea>
       </label>
       <button type="submit">Enviar mensagem</button>
     </form>
@@ -56,7 +92,7 @@ const cursosOptions = [
   .contato {
     scroll-margin-top: 78px;
     padding: 110px 24px;
-    border-top: 1px solid #17181A;
+    border-top: 1px solid #17181a;
   }
 
   .inner {
@@ -69,15 +105,15 @@ const cursosOptions = [
   }
 
   .kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: #C8A24A;
+    color: #c8a24a;
   }
 
   h2 {
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     font-weight: 500;
     font-size: clamp(32px, 4.4vw, 52px);
     line-height: 1.04;
@@ -88,7 +124,7 @@ const cursosOptions = [
   .contato-desc {
     font-size: 17px;
     line-height: 1.7;
-    color: #A5A49E;
+    color: #a5a49e;
     margin: 0 0 36px;
     font-weight: 300;
     max-width: 46ch;
@@ -106,9 +142,9 @@ const cursosOptions = [
     justify-content: space-between;
     gap: 16px;
     padding: 18px 22px;
-    border: 1px solid #1E1F22;
-    color: #F2F1EE;
-    font-family: 'Oswald', sans-serif;
+    border: 1px solid #1e1f22;
+    color: #f2f1ee;
+    font-family: "Oswald", sans-serif;
     font-size: 14px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -116,20 +152,20 @@ const cursosOptions = [
   }
 
   .contato-link:hover {
-    border-color: #C8A24A;
+    border-color: #c8a24a;
   }
 
   .contato-link .valor {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
-    color: #6E6D68;
+    color: #6e6d68;
     text-transform: none;
     letter-spacing: normal;
   }
 
   .contato-form {
-    border: 1px solid #1E1F22;
-    background: #0D0E10;
+    border: 1px solid #1e1f22;
+    background: #0d0e10;
     padding: 36px;
     display: grid;
     gap: 20px;
@@ -141,19 +177,19 @@ const cursosOptions = [
   }
 
   .contato-form label span:first-child {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #86857F;
+    color: #86857f;
   }
 
   .contato-form input,
   .contato-form select,
   .contato-form textarea {
-    background: #0A0A0B;
-    border: 1px solid #26272B;
-    color: #F2F1EE;
+    background: #0a0a0b;
+    border: 1px solid #26272b;
+    color: #f2f1ee;
     padding: 14px 16px;
     font-size: 15px;
   }
@@ -161,7 +197,7 @@ const cursosOptions = [
   .contato-form input:focus,
   .contato-form select:focus,
   .contato-form textarea:focus {
-    border-color: #C8A24A;
+    border-color: #c8a24a;
     outline: none;
   }
 
@@ -170,11 +206,11 @@ const cursosOptions = [
   }
 
   .contato-form button {
-    background: #C8A24A;
-    color: #0A0A0B;
+    background: #c8a24a;
+    color: #0a0a0b;
     border: none;
     padding: 18px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     font-size: 14px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -184,6 +220,11 @@ const cursosOptions = [
   }
 
   .contato-form button:hover {
-    background: #E3C579;
+    background: #e3c579;
+  }
+
+    .hidden-field {
+    position: absolute;
+    left: -9999px;
   }
 </style>
