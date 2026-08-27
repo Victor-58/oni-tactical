@@ -3,6 +3,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
+import WhatsappFloat from '../../components/WhatsappFloat.astro';
 import Footer from '../../components/Footer.astro';
 
 export async function getStaticPaths() {
@@ -89,7 +90,7 @@ const { Content } = await render(curso);
       </div>
     </div>
   </div>
-
+  <WhatsappFloat />
   <Footer />
 </Base>
 
