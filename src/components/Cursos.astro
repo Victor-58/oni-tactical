@@ -100,6 +100,8 @@ const cursos = cursosData.sort((a, b) => a.data.ordem - b.data.ordem);
     display: flex;
     flex-direction: column;
     transition: border-color 0.3s, transform 0.3s;
+    border-radius: 20px;
+    overflow: hidden;
   }
 
   .curso-card:hover {
@@ -179,6 +181,7 @@ const cursos = cursosData.sort((a, b) => a.data.ordem - b.data.ordem);
     text-transform: uppercase;
     cursor: pointer;
     transition: border-color 0.3s, color 0.3s;
+    border-radius: 10px;
   }
 
   .curso-btn:hover {

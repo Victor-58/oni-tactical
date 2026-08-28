@@ -1,11 +1,11 @@
 ---
 // src/components/Estrutura.astro
 const fotos = [
-  'Área de treinamento',
-  'Sala de aula',
-  'Equipamentos de proteção',
-  'Espaços de apoio',
-  'Ambiente externo',
+  "Área de treinamento",
+  "Sala de aula",
+  "Equipamentos de proteção",
+  "Espaços de apoio",
+  "Ambiente externo",
 ];
 ---
 
@@ -13,20 +13,37 @@ const fotos = [
   <div class="inner">
     <span class="kicker">06 / Instalações</span>
     <h2>Estrutura</h2>
-    <p class="intro">As imagens abaixo serão substituídas por fotos reais das instalações utilizadas nos treinamentos.</p>
+    <p class="intro">
+      As imagens abaixo serão substituídas por fotos reais das instalações
+      utilizadas nos treinamentos.
+    </p>
+  </div>
 
-    <div class="fotos-grid">
-      {fotos.map((label) => (
-        <button type="button" class="foto-btn" data-label={label}>
-          <span>{label}</span>
-        </button>
-      ))}
+  <div class="estrutura-carousel">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          fotos.map((label) => (
+            <div class="swiper-slide">
+              <button type="button" class="foto-btn" data-label={label}>
+                <span>{label}</span>
+              </button>
+            </div>
+          ))
+        }
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </section>
 
 <div id="lightbox" class="lightbox" hidden>
-  <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Fechar">×</button>
+  <button
+    type="button"
+    id="lightbox-close"
+    class="lightbox-close"
+    aria-label="Fechar">×</button
+  >
   <div class="lightbox-content">
     <span id="lightbox-label"></span>
   </div>
@@ -35,26 +52,28 @@ const fotos = [
 <style>
   .estrutura {
     scroll-margin-top: 78px;
-    padding: 110px 24px;
-    background: #0D0E10;
-    border-top: 1px solid #17181A;
+    padding: 110px 0;
+    background: #0d0e10;
+    border-top: 1px solid #17181a;
+    overflow: hidden;
   }
 
   .inner {
     max-width: 1280px;
     margin: 0 auto;
+    padding: 0 24px;
   }
 
   .kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: #C8A24A;
+    color: #c8a24a;
   }
 
   h2 {
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     font-weight: 500;
     font-size: clamp(32px, 4.4vw, 52px);
     line-height: 1.04;
@@ -65,42 +84,62 @@ const fotos = [
   .intro {
     font-size: 16px;
     line-height: 1.7;
-    color: #96958F;
+    color: #96958f;
     margin: 0 0 44px;
     max-width: 56ch;
     font-weight: 300;
   }
 
-  .fotos-grid {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  .estrutura-carousel {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px 50px;
+  }
+
+  .swiper {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
+  .swiper-slide {
+    height: 320px;
   }
 
   .foto-btn {
     all: unset;
     cursor: zoom-in;
     position: relative;
-    height: 260px;
+    width: 100%;
+    height: 100%;
     background: repeating-linear-gradient(135deg, #17181A 0 12px, #121315 12px 24px);
     border: 1px solid #1E1F22;
+    border-radius: 20px;
+    overflow: hidden;
     display: flex;
-    align-items: flex-end;
-    transition: border-color 0.3s;
-    box-sizing: border-box;
   }
 
   .foto-btn:hover {
-    border-color: #C8A24A;
+    border-color: #c8a24a;
   }
 
   .foto-btn span {
     padding: 18px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #9E9D97;
+    color: #9e9d97;
+  }
+
+  .estrutura-carousel :global(.swiper-pagination-bullet) {
+    background: #35363a;
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+  }
+
+  .estrutura-carousel :global(.swiper-pagination-bullet-active) {
+    background: #c8a24a;
   }
 
   .lightbox {
@@ -125,12 +164,12 @@ const fotos = [
     right: 24px;
     cursor: pointer;
     font-size: 32px;
-    color: #86857F;
+    color: #86857f;
     line-height: 1;
   }
 
   .lightbox-close:hover {
-    color: #C8A24A;
+    color: #c8a24a;
   }
 
   .lightbox-content {
@@ -139,49 +178,71 @@ const fotos = [
     height: 60vh;
     background: repeating-linear-gradient(135deg, #17181A 0 12px, #121315 12px 24px);
     border: 1px solid #1E1F22;
+    border-radius: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   #lightbox-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 13px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #6E6D68;
+    color: #6e6d68;
   }
 </style>
 
 <script>
-  const buttons = document.querySelectorAll('.foto-btn');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxLabel = document.getElementById('lightbox-label');
-  const closeBtn = document.getElementById('lightbox-close');
+  import Swiper from "swiper";
+  import { Autoplay, Pagination } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/pagination";
+
+  new Swiper(".swiper", {
+    modules: [Autoplay, Pagination],
+    slidesPerView: 1.15,
+    spaceBetween: 16,
+    loop: true,
+    speed: 4000,
+    autoplay: {
+      delay: 1500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+        breakpoints: {
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 2.6 },
+    },
+  });
+
+  const buttons = document.querySelectorAll(".foto-btn");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxLabel = document.getElementById("lightbox-label");
+  const closeBtn = document.getElementById("lightbox-close");
 
   buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const label = btn.getAttribute('data-label') || '';
+    btn.addEventListener("click", () => {
+      const label = btn.getAttribute("data-label") || "";
       if (lightboxLabel) lightboxLabel.textContent = `[ ${label} ]`;
-      lightbox?.removeAttribute('hidden');
+      lightbox?.removeAttribute("hidden");
     });
   });
 
-  closeBtn?.addEventListener('click', () => {
-    lightbox?.setAttribute('hidden', '');
+  closeBtn?.addEventListener("click", () => {
+    lightbox?.setAttribute("hidden", "");
   });
 
-  // Fecha clicando fora do conteúdo (no fundo escuro)
-  lightbox?.addEventListener('click', (e) => {
+  lightbox?.addEventListener("click", (e) => {
     if (e.target === lightbox) {
-      lightbox.setAttribute('hidden', '');
+      lightbox.setAttribute("hidden", "");
     }
   });
 
-  // Fecha com a tecla Esc
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      lightbox?.setAttribute('hidden', '');
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      lightbox?.setAttribute("hidden", "");
     }
   });
 </script>

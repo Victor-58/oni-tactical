@@ -1,8 +1,8 @@
 ---
 // src/components/Depoimentos.astro
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const depoimentosData = await getCollection('depoimentos');
+const depoimentosData = await getCollection("depoimentos");
 const depoimentos = depoimentosData.map((item) => item.data);
 ---
 
@@ -10,46 +10,57 @@ const depoimentos = depoimentosData.map((item) => item.data);
   <div class="inner">
     <span class="kicker">07 / Alunos</span>
     <h2>O que nossos alunos dizem</h2>
+  </div>
 
-    <div class="depoimentos-grid">
-      {depoimentos.map((d) => (
-        <blockquote class="depoimento-card">
-          <div class="estrelas">★★★★★</div>
-          <p class="depoimento-texto">{d.texto}</p>
-          <footer>
-            <span class="avatar"></span>
-            <span>
-              <span class="nome">{d.nome}</span>
-              <span class="curso">{d.curso}</span>
-            </span>
-          </footer>
-        </blockquote>
-      ))}
+  <div class="depoimentos-carousel">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          depoimentos.map((d) => (
+            <div class="swiper-slide">
+              <blockquote class="depoimento-card">
+                <div class="estrelas">★★★★★</div>
+                <p class="depoimento-texto">{d.texto}</p>
+                <footer>
+                  <span class="avatar" />
+                  <span>
+                    <span class="nome">{d.nome}</span>
+                    <span class="curso">{d.curso}</span>
+                  </span>
+                </footer>
+              </blockquote>
+            </div>
+          ))
+        }
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </section>
 
 <style>
   .depoimentos {
-    padding: 110px 24px;
-    border-top: 1px solid #17181A;
+    padding: 110px 0;
+    border-top: 1px solid #17181a;
+    overflow: hidden;
   }
 
   .inner {
     max-width: 1280px;
     margin: 0 auto;
+    padding: 0 24px;
   }
 
   .kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: #C8A24A;
+    color: #c8a24a;
   }
 
   h2 {
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     font-weight: 500;
     font-size: clamp(32px, 4.4vw, 52px);
     line-height: 1.04;
@@ -57,23 +68,29 @@ const depoimentos = depoimentosData.map((item) => item.data);
     margin: 20px 0 54px;
   }
 
-  .depoimentos-grid {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  .depoimentos-carousel {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px 50px;
+  }
+
+  .swiper-slide {
+    height: 280px;
   }
 
   .depoimento-card {
     margin: 0;
+    height: 100%;
+    box-sizing: border-box;
     padding: 32px;
-    border: 1px solid #1E1F22;
-    background: #0D0E10;
+    border: 1px solid #1e1f22;
+    background: #0d0e10;
   }
 
   .estrelas {
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     letter-spacing: 0.3em;
-    color: #C8A24A;
+    color: #c8a24a;
     font-size: 14px;
     margin-bottom: 18px;
   }
@@ -81,27 +98,35 @@ const depoimentos = depoimentosData.map((item) => item.data);
   .depoimento-texto {
     font-size: 16px;
     line-height: 1.7;
-    color: #C0BFBA;
+    color: #c0bfba;
     margin: 0 0 24px;
     font-weight: 300;
   }
 
-  .depoimento-card footer {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+  .depoimento-card {
+    margin: 0;
+    height: 280px;
+    box-sizing: border-box;
+    padding: 32px;
+    border: 1px solid #1e1f22;
+    background: #0d0e10;
+    border-radius: 20px;
   }
 
   .avatar {
     width: 42px;
     height: 42px;
-    background: repeating-linear-gradient(135deg, #1D1E21 0 6px, #16171A 6px 12px);
+    background: repeating-linear-gradient(
+      135deg,
+      #1d1e21 0 6px,
+      #16171a 6px 12px
+    );
     flex: 0 0 auto;
   }
 
   .nome {
     display: block;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     font-size: 15px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -109,9 +134,47 @@ const depoimentos = depoimentosData.map((item) => item.data);
 
   .curso {
     display: block;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 10px;
-    color: #6E6D68;
+    color: #8b8a85;
     letter-spacing: 0.12em;
   }
+
+  .depoimentos-carousel :global(.swiper-pagination-bullet) {
+    background: #35363a;
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+  }
+
+  .depoimentos-carousel :global(.swiper-pagination-bullet-active) {
+    background: #c8a24a;
+  }
 </style>
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay, Pagination } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/pagination";
+
+  new Swiper(".depoimentos-carousel .swiper", {
+    modules: [Autoplay, Pagination],
+    slidesPerView: 1,
+    spaceBetween: 18,
+    loop: true,
+    speed: 4000,
+    autoplay: {
+      delay: 1500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 2.26 },
+    },
+  });
+</script>

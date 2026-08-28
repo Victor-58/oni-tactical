@@ -3,7 +3,10 @@
 ---
 
 <section id="top" class="hero">
-  <div class="hero-bg"></div>
+    <div class="hero-bg"></div>
+  <svg class="hero-mountains" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,140 L60,90 L120,130 L200,50 L280,100 L340,20 L420,80 L500,40 L580,110 L660,30 L740,90 L820,50 L900,120 L980,60 L1060,100 L1140,40 L1220,110 L1300,70 L1380,120 L1440,90 L1440,200 L0,200 Z" />
+  </svg>
   <div class="hero-overlay"></div>
   <span class="hero-photo-note">[ foto do hero — treinamento em ambiente controlado ]</span>
 
@@ -182,5 +185,21 @@
     font-size: 12px;
     line-height: 1.7;
     color: #8A8983;
+  }
+
+    .hero-mountains {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    z-index: 1;
+  }
+
+  .hero-mountains path {
+    fill: #1A1B1E;
+    stroke: #C8A24A;
+    stroke-width: 1;
+    stroke-opacity: 0.35;
   }
 </style>
