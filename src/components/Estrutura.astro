@@ -19,21 +19,19 @@ const fotos = [
     </p>
   </div>
 
-  <div class="estrutura-carousel">
+    <div class="estrutura-carousel">
     <div class="swiper">
       <div class="swiper-wrapper">
-        {
-          fotos.map((label) => (
-            <div class="swiper-slide">
-              <button type="button" class="foto-btn" data-label={label}>
-                <span>{label}</span>
-              </button>
-            </div>
-          ))
-        }
+        {fotos.map((label) => (
+          <div class="swiper-slide">
+            <button type="button" class="foto-btn" data-label={label}>
+              <span>{label}</span>
+            </button>
+          </div>
+        ))}
       </div>
-      <div class="swiper-pagination"></div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
 </section>
 
@@ -131,6 +129,18 @@ const fotos = [
     color: #9e9d97;
   }
 
+    .estrutura-carousel .swiper-pagination {
+    position: static !important;
+    width: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    display: flex !important;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
   .estrutura-carousel :global(.swiper-pagination-bullet) {
     background: #35363a;
     opacity: 1;
@@ -197,7 +207,7 @@ const fotos = [
   import "swiper/css";
   import "swiper/css/pagination";
 
-  new Swiper(".swiper", {
+  new Swiper(".estrutura-carousel .swiper", {
     modules: [Autoplay, Pagination],
     slidesPerView: 1.15,
     spaceBetween: 16,
@@ -208,7 +218,7 @@ const fotos = [
       disableOnInteraction: false,
     },
     pagination: {
-      el: ".swiper-pagination",
+      el: ".estrutura-carousel .swiper-pagination",
       clickable: true,
     },
         breakpoints: {

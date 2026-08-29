@@ -3,12 +3,8 @@
 ---
 
 <section id="top" class="hero">
-    <div class="hero-bg"></div>
-  <svg class="hero-mountains" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,140 L60,90 L120,130 L200,50 L280,100 L340,20 L420,80 L500,40 L580,110 L660,30 L740,90 L820,50 L900,120 L980,60 L1060,100 L1140,40 L1220,110 L1300,70 L1380,120 L1440,90 L1440,200 L0,200 Z" />
-  </svg>
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <span class="hero-photo-note">[ foto do hero — treinamento em ambiente controlado ]</span>
 
   <div class="hero-content">
     <div class="hero-kicker">
@@ -47,13 +43,17 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(135deg, #17181A 0 12px, #121315 12px 24px);
+    background-image: url('/imagens/hero-banner.webp');
+    background-size: cover;
+    background-position: center 30%;
   }
 
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10,10,11,0.82) 0%, rgba(10,10,11,0.6) 45%, rgba(10,10,11,0.97) 100%);
+    background:
+      linear-gradient(90deg, #0A0A0B 0%, #0A0A0B 48%, rgba(10,10,11,0.85) 52%, rgba(10,10,11,0) 72%),
+      linear-gradient(180deg, rgba(10,10,11,0) 70%, rgba(10,10,11,0.95) 100%);
   }
 
   .hero-photo-note {
